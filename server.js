@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose =require('mongoose');
 const bodyParser = require('body-parser');
 
+const items = require('./routes/api/items');
+
 const app = express();
 
 
@@ -16,6 +18,9 @@ mongoose
     .connect(db)
     .then(() => console.log('MongoDB connected....'))
     .catch(err => console.log(err));
+
+
+app.use('/api/items',items);
 
 //mongoose.connect('mongodb://localhost/test')
 const port = process.env.PORT || 5000;
